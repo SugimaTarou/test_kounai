@@ -1,0 +1,17 @@
+main.c:64:5:SW1	8	static
+main.c:69:5:SW2	8	static
+main.c:74:5:SW3	8	static
+main.c:79:5:SW4	8	static
+main.c:84:5:SW5	8	static
+main.c:89:5:SW6	8	static
+main.c:94:5:SW7	8	static
+main.c:99:5:SW8	8	static
+main.c:104:6:motor1	16	static
+main.c:144:6:motor2	16	static
+main.c:184:6:motor3	16	static
+main.c:230:5:main	8	static
+main.c:351:6:SystemClock_Config	96	static
+main.c:395:13:MX_TIM1_Init	72	static
+main.c:485:13:MX_TIM2_Init	64	static
+main.c:548:13:MX_GPIO_Init	40	static
+main.c:581:6:Error_Handler	4	static
