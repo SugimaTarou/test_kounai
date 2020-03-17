@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stdio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -258,7 +259,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
+int A=0;
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -285,54 +286,65 @@ int main(void)
 	}
 	 HAL_Delay(1000);
 */
-	 //motor1の挙動 �?右
+	 //motor1の挙動 ???��?��??��?��?右
 
+	  A=SW1();
 
-	 	  if(SW4()==0)
-	 	  	  {
-	 	  		  //printf("sw4\n");
-	 	  		 motor1(1,40);
-	 	  	  }
-	 	  	  else if(SW2()==0)
-	 	  	 	  {
-	 	  	 		//  printf("sw2\n");
-	 	  	 		  motor1(0,40);
-	 	  	 	  }
-	 	  	  else
+	  switch(A){
+
+	  case 1:
+ 		  printf("sw1_ok \n\r");
+ 		  motor1(1,999);
+	 	  motor2(1,999);
+	 	  motor3(1,999);
+	 	  A=3;
+	 	  break;
+
+	  case 0:
+		  printf("no_motor \n\r");
+	 	  motor1(2,0);
+	 	  motor2(2,0);
+	 	  motor3(2,0);
+	 	  A=3;
+		  break;
+	  }
+
+	 	  	 /* else
 	 	  	  {
 	 	  		  motor1(2,0);
 	 	  	  }
-
-
+	 	  	  */
+/*
 	 	  	//motor3挙動 左
 	 	  	   if(SW8()==0)
 	 	  	  {
 
-	 	  		  motor3(1,30);
+	 	  		  motor3(1,300);
 	 	  	  }
 
 	 	  	   else if(SW6()==0)
 	 	  	 	  {
-	 	  	 		  motor3(0,30);
+	 	  	 		  motor3(0,300);
 	 	  	 	  }
 	 	  	   else{
 	 	  		   motor3(2,0);
 	 	  	   }
 
+
 	 	  	//motor2挙動 a-m
 	 	  	   if(SW1()==0)
 	 	  	  {
-	 	  		motor2(1,15);
+	 	  		motor2(1,150);
 	 	  	  }
 
 	 	  	   else if(SW7()==0)
 	 	  	  {
-	 	  		  motor2(0,15);
+	 	  		  motor2(0,150);
 	 	  	  }
 	 	  	   else{
 	 	  		   motor2(2,0);
 	 	  	   }
-
+*/
 	 	  HAL_Delay(10);
 
 
@@ -341,8 +353,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
   /* USER CODE END 3 */
+}
 
 /**
   * @brief System Clock Configuration
@@ -400,13 +412,14 @@ static void MX_TIM1_Init(void)
   /* USER CODE END TIM1_Init 0 */
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
 
   /* USER CODE BEGIN TIM1_Init 1 */
 
   /* USER CODE END TIM1_Init 1 */
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 15;
+  htim1.Init.Prescaler = 16;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim1.Init.Period = 999;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -455,6 +468,10 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
+  if (HAL_TIMEx_RemapConfig(&htim1, TIM_TIM1_ADC1_NONE) != HAL_OK)
+  {
+    Error_Handler();
+  }
   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
@@ -497,7 +514,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 15;
+  htim2.Init.Prescaler = 16;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 999;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;

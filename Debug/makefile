@@ -55,8 +55,8 @@ test_kounai.bin \
 all: test_kounai.elf secondary-outputs
 
 # Tool invocations
-test_kounai.elf: $(OBJS) $(USER_OBJS) C:\Users\shint\STM32CubeIDE\workspace_1.3.0\test_kounai\STM32F303K8TX_FLASH.ld
-	arm-none-eabi-g++ -o "test_kounai.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\shint\STM32CubeIDE\workspace_1.3.0\test_kounai\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test_kounai.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+test_kounai.elf: $(OBJS) $(USER_OBJS) C:\Users\shint\git\test_kounai\STM32F303K8TX_FLASH.ld
+	arm-none-eabi-g++ -o "test_kounai.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\shint\git\test_kounai\STM32F303K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="test_kounai.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
